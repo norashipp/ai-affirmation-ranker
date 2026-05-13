@@ -67,9 +67,9 @@ function LandingPage() {
             </Typography>
             <Typography variant="body1" paragraph sx={{ color: 'white' }}>
 		Welcome to the LLM Ethical Gradient Game! In this activity you will evaluate
-		scenarios involving the use of large language models as it pertains to our collaboration.
+		scenarios involving the use of large language models as it pertains to our department.
 		Your task is to judge how concerning each situation is. Your input
-		is anonymous, and we will only look at bulk histograms of the results from everyone to initiate collaboration-wide discussions.
+		is anonymous, and we will only look at bulk histograms of the results from everyone to initiate department-wide discussions.
             </Typography>
 	      <Typography variant="body1" paragraph sx={{ color: 'white' }}>
               You will receive a set of scenario cards. Drag and drop them to place
@@ -134,11 +134,11 @@ function LandingPage() {
             and{" "}
             <Link href="https://chatgpt.com/" target="_blank" rel="noopener">
               ChatGPT
-            </Link>. It was subsequently adapted by hand for use in the NANOGrav collaboration Spring 2026 meeting by S. Burke-Spolaor. SBS developed the results summary page using Claude as an AI coding assistant, via the interface provided by Johns Hopkins University's "HopGPT" service.
+            </Link>. It was subsequently adapted for department use by N. Shipp using Claude Code as an AI coding assistant.
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
             <Link
-              href="https://github.com/xiggystardust/affirmation-ranker"
+              href="https://github.com/norashipp/ai-affirmation-ranker"
               target="_blank"
               rel="noopener"
               underline="none"
@@ -183,11 +183,7 @@ function LandingPage() {
               Morgan Fouesneau (MPIfA), Ivelina G. Momcheva (MPIfA), Sarah Burke-Spolaor (WVU/JHU), & Clara Salditt (Ludwig-Maximilian-Universität Munich)
           </Typography>
           <Typography variant="body2" sx={{ color: 'white', mt: 2 }}>
-            We thank the organizers of the{" "}
-            <Link href="https://www.stsci.edu/contents/events/stsci/2026/march/language-ai-in-the-space-sciences" target="_blank" rel="noopener">
-              Language AI in the Space Sciences Workshop
-            </Link>{" "}
-            at STScI (March 9–12, 2026) for their participation and support in developing this game.
+            Adapted for department use by Nora Shipp.
           </Typography>
         </CardContent>
       </Card>
