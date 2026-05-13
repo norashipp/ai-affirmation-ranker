@@ -32,12 +32,10 @@ function LandingPage() {
         zIndex: -1, overflow: 'hidden',
         background: `linear-gradient(to bottom,
           #000010 0%,
-          #020320 18%,
-          #060835 42%,
-          #120030 62%,
-          #1e0018 78%,
-          #150008 90%,
-          #080002 100%)`,
+          #020318 20%,
+          #050830 50%,
+          #0e0030 75%,
+          #0a0018 100%)`,
       }}>
       </Box>
       <Stack spacing={{ xs: 3, sm: 4 }} alignItems="center" sx={{ background: 'transparent' }}>
