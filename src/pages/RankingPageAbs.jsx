@@ -7,7 +7,7 @@ import { submitRankingResults } from '../services/resultsService'
 
 import { useMediaQuery, useTheme } from '@mui/material'
 
-const SURVEY_ID = 'NANOGravSpring2026'
+const SURVEY_ID = 'uwastro2026'
 const SURFACE_PCT = 14
 
 const SPACE_OBJECTS = ['🪐', '🚀', '🛸', '☄️', '🌙', '🛰️', '🌟', '⭐', '🔭']

@@ -18,7 +18,7 @@ import { ArrowBack as ArrowBackIcon, Download as DownloadIcon } from "@mui/icons
 import { getResultsFromFirestore, getSurveyStats } from "../services/adminService"
 import { getAllAffirmations } from "../services/surveyService"
 
-const SURVEY_ID = "spring2026"
+const SURVEY_ID = "uwastro2026"
 
 // Ordered bin definitions; uncomment below for thinner bins.
 /*
