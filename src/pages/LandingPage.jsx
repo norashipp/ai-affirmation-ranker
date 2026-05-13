@@ -58,7 +58,7 @@ function LandingPage() {
             </Typography>
             <Typography variant="body1" paragraph sx={{ color: 'white' }}>
 		Welcome to the LLM Ethical Gradient Game! In this activity you will evaluate
-		scenarios involving the use of large language models as it pertains to our department.
+		scenarios involving the use of large language models as it pertains to the UW Astronomy Department.
 		Your task is to judge how concerning each situation is. Your input
 		is anonymous, and we will only look at bulk histograms of the results from everyone to initiate department-wide discussions.
             </Typography>
@@ -125,7 +125,7 @@ function LandingPage() {
             and{" "}
             <Link href="https://chatgpt.com/" target="_blank" rel="noopener">
               ChatGPT
-            </Link>. It was subsequently adapted for department use by N. Shipp using Claude Code as an AI coding assistant.
+            </Link>. It was subsequently adapted for the UW Astronomy Department by N. Shipp using Claude Code as an AI coding assistant.
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
             <Link
@@ -174,7 +174,7 @@ function LandingPage() {
               Morgan Fouesneau (MPIfA), Ivelina G. Momcheva (MPIfA), Sarah Burke-Spolaor (WVU/JHU), & Clara Salditt (Ludwig-Maximilian-Universität Munich)
           </Typography>
           <Typography variant="body2" sx={{ color: 'white', mt: 2 }}>
-            Adapted for department use by Nora Shipp.
+            Adapted for the UW Astronomy Department by Nora Shipp.
           </Typography>
         </CardContent>
       </Card>
