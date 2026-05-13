@@ -31,21 +31,12 @@ function LandingPage() {
         position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
         zIndex: -1, overflow: 'hidden',
         background: `linear-gradient(to bottom,
-          #dde8f2 0%,
-          #c2d6e8 12%,
-          #5a8898 14%,
-          #3d6878 20%,
-          #274858 45%,
-          #162530 100%)`,
+          #000010 0%,
+          #020318 20%,
+          #050830 50%,
+          #0e0030 75%,
+          #0a0018 100%)`,
       }}>
-        {/* Surface foam line */}
-        <Box sx={{
-          position: 'absolute', left: 0, right: 0,
-          top: '14%', height: 3,
-          background: 'rgba(255,255,255,0.55)',
-        }} />
-        {/* Clouds */}
-        {/* You can add clouds here if desired, using cloud asset from RankingPageAbs */}
       </Box>
       <Stack spacing={{ xs: 3, sm: 4 }} alignItems="center" sx={{ background: 'transparent' }}>
       <Typography
@@ -89,7 +80,7 @@ function LandingPage() {
             <Typography variant="body1" sx={{ color: 'white' }}>
               1. Click "Start Ranking" to begin
               <br />
-              2. Drag scenarios into the ocean and drop them at your chosen level, or click anywhere on the scale to place them. Reposition placed cards anytime. Scenarios you think should be <strong>banned</strong> go below the red line.
+              2. Drag scenarios into the cosmos and drop them at your chosen level, or click anywhere on the scale to place them. Reposition placed cards anytime. Scenarios you think should be <strong>banned</strong> go below the red line.
               <br />
               3. Submit when finished
             </Typography>

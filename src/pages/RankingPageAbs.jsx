@@ -6,26 +6,11 @@ import { useAffirmations } from '../hooks/useAffirmations'
 import { submitRankingResults } from '../services/resultsService'
 
 import { useMediaQuery, useTheme } from '@mui/material'
-import boat1 from '../assets/boat-sailboat-sailing-svgrepo-com.svg'
-import boat2 from '../assets/boat-toy-boat-svgrepo-com.svg'
-import cloud from '../assets/cloud-svgrepo-com.svg'
-import fish0 from '../assets/fish-svgrepo-com.svg'
-import fish1 from '../assets/fish-svgrepo-com (1).svg'
-import fish2 from '../assets/fish-svgrepo-com (2).svg'
-import fish3 from '../assets/fish-svgrepo-com (3).svg'
-import fish4 from '../assets/fish-svgrepo-com (4).svg'
-import fish5 from '../assets/fish-svgrepo-com (5).svg'
-import fishSchool from '../assets/fishes-fish-svgrepo-com.svg'
-import octopus from '../assets/octopus-svgrepo-com.svg'
-import shark from '../assets/shark-svgrepo-com.svg'
-import anglerFish from '../assets/angler-fish-svgrepo-com (1).svg'
-import squid from '../assets/squid-svgrepo-com.svg'
 
 const SURVEY_ID = 'NANOGravSpring2026'
-const SURFACE_PCT = 14  // % from top where sky meets ocean
+const SURFACE_PCT = 14
 
-const CREATURE_ASSETS = [fish0, fish1, fish2, fish3, fish4, fish5, fishSchool, octopus, squid]
-const BOAT_ASSETS = [boat1, boat2]
+const SPACE_OBJECTS = ['🪐', '🚀', '🛸', '☄️', '🌙', '🛰️', '🌟', '⭐', '🔭']
 
 function rand(min, max) { return min + Math.random() * (max - min) }
 
@@ -33,7 +18,7 @@ function RankingPage() {
   const navigate = useNavigate()
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-  const creatureSize = isMobile ? 130 : 220
+  const bigEmojiSize = isMobile ? 80 : 130
   const { affirmations } = useAffirmations(SURVEY_ID, 6)
   const [allRated, setAllRated] = useState(false)
   const [cardScores, setCardScores] = useState(() =>
@@ -41,7 +26,7 @@ function RankingPage() {
   )
   const startTimeRef = useRef(null)
 
-  // Make body transparent so ocean background shows through; disable scrolling
+  // Make body transparent so space background shows through; disable scrolling
   useEffect(() => {
     document.body.style.background = 'transparent'
     document.body.style.overflow = 'hidden'
@@ -52,30 +37,22 @@ function RankingPage() {
     }
   }, [])
 
-  const creatures = useMemo(() =>
-    Array.from({ length: 12 }, () => ({
-      src: CREATURE_ASSETS[Math.floor(Math.random() * CREATURE_ASSETS.length)],
+  const stars = useMemo(() =>
+    Array.from({ length: 90 }, () => ({
+      x: rand(0, 100),
+      y: rand(0, 100),
+      size: rand(1, 3),
+      opacity: rand(0.3, 1),
+    }))
+  , [])
+
+  const spaceObjects = useMemo(() =>
+    Array.from({ length: 9 }, () => ({
+      emoji: SPACE_OBJECTS[Math.floor(Math.random() * SPACE_OBJECTS.length)],
       x: rand(2, 90),
-      y: rand(SURFACE_PCT + 4, 92),
-      size: rand(28, 80),
-      flip: Math.random() > 0.5,
-      opacity: rand(0.5, 0.95),
-    }))
-  , [])
-
-  const boats = useMemo(() =>
-    Array.from({ length: 4 }, () => ({
-      src: BOAT_ASSETS[Math.floor(Math.random() * 2)],
-      x: rand(3, 85),
-      size: rand(45, 80),
-    }))
-  , [])
-
-  const clouds = useMemo(() =>
-    Array.from({ length: 4 }, () => ({
-      x: rand(2, 85),
-      y: rand(0.5, 4),
-      size: rand(40, 65),
+      y: rand(3, 92),
+      size: rand(20, 45),
+      opacity: rand(0.5, 0.9),
     }))
   , [])
 
@@ -92,75 +69,62 @@ function RankingPage() {
 
   return (
     <>
-      {/* Ocean background — fixed, full viewport */}
+      {/* Space background — fixed, full viewport */}
       <Box sx={{
         position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
         zIndex: -1, overflow: 'hidden',
         background: `linear-gradient(to bottom,
-          #dde8f2 0%,
-          #c2d6e8 ${SURFACE_PCT - 2}%,
-          #5a8898 ${SURFACE_PCT}%,
-          #3d6878 ${SURFACE_PCT + 6}%,
-          #274858 45%,
-          #162530 100%)`,
+          #000010 0%,
+          #020318 20%,
+          #050830 50%,
+          #0e0030 75%,
+          #0a0018 100%)`,
       }}>
-        {/* Surface foam line */}
+        {/* Stars */}
+        {stars.map((s, i) => (
+          <Box key={`s${i}`} sx={{
+            position: 'absolute',
+            left: `${s.x}%`, top: `${s.y}%`,
+            width: s.size, height: s.size,
+            borderRadius: '50%',
+            bgcolor: 'white',
+            opacity: s.opacity,
+            pointerEvents: 'none',
+          }} />
+        ))}
+
+        {/* Space objects */}
+        {spaceObjects.map((obj, i) => (
+          <Box key={`o${i}`} sx={{
+            position: 'absolute',
+            left: `${obj.x}%`, top: `${obj.y}%`,
+            fontSize: obj.size,
+            opacity: obj.opacity,
+            pointerEvents: 'none',
+            lineHeight: 1,
+            userSelect: 'none',
+          }}>
+            {obj.emoji}
+          </Box>
+        ))}
+
+        {/* Fixed large planet — bottom right */}
         <Box sx={{
-          position: 'absolute', left: 0, right: 0,
-          top: `${SURFACE_PCT}%`, height: 3,
-          background: 'rgba(255,255,255,0.55)',
-        }} />
+          position: 'absolute', right: '1%', bottom: 0,
+          fontSize: bigEmojiSize, lineHeight: 1,
+          opacity: 0.85, pointerEvents: 'none',
+          transform: 'translateY(30%)',
+          userSelect: 'none',
+        }}>🪐</Box>
 
-        {/* Clouds */}
-        {clouds.map((c, i) => (
-          <img key={`c${i}`} src={cloud} alt="" style={{
-            position: 'absolute',
-            left: `${c.x}%`, top: `${c.y}%`,
-            width: c.size, opacity: 0.8,
-            pointerEvents: 'none',
-          }} />
-        ))}
-
-        {/* Boats — sitting on surface */}
-        {boats.map((b, i) => (
-          <img key={`b${i}`} src={b.src} alt="" style={{
-            position: 'absolute',
-            left: `${b.x}%`,
-            top: `${SURFACE_PCT}%`,
-            transform: 'translateY(-88%)',
-            width: b.size,
-            pointerEvents: 'none',
-          }} />
-        ))}
-
-        {/* Sea creatures */}
-        {creatures.map((c, i) => (
-          <img key={`f${i}`} src={c.src} alt="" style={{
-            position: 'absolute',
-            left: `${c.x}%`, top: `${c.y}%`,
-            width: c.size, opacity: c.opacity,
-            transform: c.flip ? 'scaleX(-1)' : 'none',
-            pointerEvents: 'none',
-          }} />
-        ))}
-
-        {/* Fixed shark — bottom right corner, only top half visible */}
-        <img src={shark} alt="" style={{
-          position: 'absolute',
-          right: '1%', bottom: 0,
-          width: creatureSize, opacity: 0.9,
-          transform: 'translateY(40%)',
-          pointerEvents: 'none',
-        }} />
-
-        {/* Fixed angler fish — bottom, 30% from left */}
-        <img src={anglerFish} alt="" style={{
-          position: 'absolute',
-          left: '30%', bottom: 0,
-          width: creatureSize, opacity: 0.9,
+        {/* Fixed black hole — bottom, 30% from left */}
+        <Box sx={{
+          position: 'absolute', left: '30%', bottom: 0,
+          fontSize: bigEmojiSize, lineHeight: 1,
+          opacity: 0.8, pointerEvents: 'none',
           transform: 'translateY(25%)',
-          pointerEvents: 'none',
-        }} />
+          userSelect: 'none',
+        }}>🌑</Box>
       </Box>
 
       {/* Game content */}
